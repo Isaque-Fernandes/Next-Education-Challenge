@@ -20,10 +20,10 @@
 		</div>
 		<button id 			= "decryptCopyBtn">Copy text</button>
 		<script>
-		/*	###	DOCUMENTATION ###
+		/* ### DOCUMENTATION ###
 		*/
 
-		//	VARIABLES
+		// VARIABLES
 		let letter 							= "";
 		let pattern 							= /^[a-zBCDFGHJKLMNPQRSTVWXYZ!]+$/;
 
@@ -49,7 +49,7 @@
 		let decryptCopyBtn						= document.querySelector("#decryptCopyBtn");
 		decryptCopyBtn.style.display					= "none";
 
-		//	FUNCTIONS
+		// FUNCTIONS
 		const fnCrypt	 						= () =>{       
 			letter 							= requireInput.value;
 			
@@ -108,7 +108,7 @@
 		return word;
 		};
 
-		//	EVENTS
+		// EVENTS
 		requireInput.focus();
 		cryptBtn.onclick 						= fnCrypt;
 		decryptBtn.onclick 						= () =>{

@@ -6,7 +6,7 @@
 		<title>Crypt and Decrypt</title>
 	</head>
 	<body>
-		<h1>Type or paste your phrase, and see your message<br> (Only lowercase letters, ! symbol and space supported)</h1><br>
+		<h1>Type or paste your phrase, and see your message<br> (Only lowercase letters and ! symbol supported)</h1><br>
 		<label>Text message: </label>
 		<input 	id 			= "requireInput" placeholder 	= "Type text here"><button id 			= "cryptBtn">Crypt</button>
 		<div>
@@ -24,42 +24,42 @@
 		*/
 
 		//	VARIABLES
-		let letter 							= "";
-		let pattern 						= /^[a-z !]+$/;
+		let letter 								= "";
+		let pattern 							= /^[a-z !]+$/;
 
-		let word 							= [];
-		let criptWord						= ["enter", "imes", "ai", "ober", "ufat"];
-		let originalWord 					= ["e", "i", "a", "o", "u"];
+		let word 								= [];
+		let criptWord							= ["enter", "imes", "ai", "ober", "ufat"];
+		let originalWord 						= ["e", "i", "a", "o", "u"];
 
-		let requireInput 					= document.querySelector("#requireInput");
+		let requireInput 						= document.querySelector("#requireInput");
 
-		let criptLabel						= document.querySelector("#criptLabel");
-		let cryptInput						= document.querySelector("#cryptInput");
+		let criptLabel							= document.querySelector("#criptLabel");
+		let cryptInput							= document.querySelector("#cryptInput");
 
-		let decryptLabel					= document.querySelector("#decryptLabel");
-		decryptLabel.style.display 			= "none";
-		let decryptInput 					= document.querySelector("#decryptInput");
-		decryptInput.style.display 			= "none";
+		let decryptLabel						= document.querySelector("#decryptLabel");
+		decryptLabel.style.display 				= "none";
+		let decryptInput 						= document.querySelector("#decryptInput");
+		decryptInput.style.display 				= "none";
 
-		let cryptBtn 						= document.querySelector("#cryptBtn");
-		let cryptCopyBtn					= document.querySelector("#cryptCopyBtn");
-		cryptCopyBtn.style.display			= "none";
+		let cryptBtn 							= document.querySelector("#cryptBtn");
+		let cryptCopyBtn						= document.querySelector("#cryptCopyBtn");
+		cryptCopyBtn.style.display				= "none";
 
-		let decryptBtn 						= document.querySelector("#decryptBtn");
-		let decryptCopyBtn					= document.querySelector("#decryptCopyBtn");
-		decryptCopyBtn.style.display		= "none";
+		let decryptBtn 							= document.querySelector("#decryptBtn");
+		let decryptCopyBtn						= document.querySelector("#decryptCopyBtn");
+		decryptCopyBtn.style.display			= "none";
 
 		//	FUNCTIONS
-		const fnCrypt	 					= () =>{       
-			letter 							= requireInput.value;
+		const fnCrypt	 						= () =>{       
+			letter 								= requireInput.value;
 			
 			if(pattern.test(letter)){
-				word 						= letter.split("");
+				word 							= letter.split("");
 				
-				let i 	= 0;
+				let i 							= 0;
 				
 				while(i < originalWord.length){
-					word 					= word.join("").replace(originalWord[i], criptWord[i]).split("");
+					word 						= word.join("").replace(originalWord[i], criptWord[i]).split("");
 					i++;
 				}
 				
@@ -75,22 +75,22 @@
 				requireInput.focus();
 			
 			}else{
-				alert("Error only the character <!> and lowercase letters");
-				decryptLabel.style.display 			= "none";
-				decryptInput.style.display 			= "none";
-				cryptCopyBtn.style.display			= "none";
-				decryptCopyBtn.style.display		= "none";
-				cryptInput.value					= "";
-				requireInput.value					= "";
+				alert("Error only the exclamation character ' ! ' and lowercase letters supported");
+				decryptLabel.style.display 		= "none";
+				decryptInput.style.display 		= "none";
+				cryptCopyBtn.style.display		= "none";
+				decryptCopyBtn.style.display	= "none";
+				cryptInput.value				= "";
+				requireInput.value				= "";
 				requireInput.focus();
 				return false;
 			}
 		};	
 
-		const fnDecrypt 					= (cript) => {
-		word 								= cript;
+		const fnDecrypt 						= (cript) => {
+		word 									= cript;
 
-		let i 								= 0;
+		let i 									= 0;
 		/*	### DEBUG <i> <criptWord.length[5]>###
 			i = 0;
 			
@@ -102,7 +102,7 @@
 				word[ga]
 		*/
 		while (i < criptWord.length) {
-		word 								= word.replaceAll(criptWord[i], originalWord[i]);
+		word 									= word.replaceAll(criptWord[i], originalWord[i]);
 		i++
 		}
 		return word;
@@ -110,22 +110,22 @@
 
 		//	EVENTS
 		requireInput.focus();
-		cryptBtn.onclick 					= fnCrypt;
-		decryptBtn.onclick 					= () =>{
-		decryptInput.value					= fnDecrypt(cryptInput.value);
-		decryptLabel.style.display 			= "inline-block";
-		decryptInput.style.display 			= "inline-block";
-		
-		cryptCopyBtn.style.display			= "inline-block";
-		decryptCopyBtn.style.display		= "inline-block";
+		cryptBtn.onclick 						= fnCrypt;
+		decryptBtn.onclick 						= () =>{
+		decryptInput.value						= fnDecrypt(cryptInput.value);
+		decryptLabel.style.display 				= "inline-block";
+		decryptInput.style.display 				= "inline-block";
+	
+		cryptCopyBtn.style.display				= "inline-block";
+		decryptCopyBtn.style.display			= "inline-block";
 		};
 
-		cryptCopyBtn.onclick 				= () => {
+		cryptCopyBtn.onclick 					= () => {
 		cryptInput.select(); 
 		document.execCommand('copy'); 
 		};
 
-		decryptCopyBtn.onclick 				= () => {
+		decryptCopyBtn.onclick 					= () => {
 		decryptInput.select(); 
 		document.execCommand('copy');
 		};

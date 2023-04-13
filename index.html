@@ -25,7 +25,7 @@
 
 		//	VARIABLES
 		let letter 								= "";
-		let pattern 							= /^[a-zA-Z !]+$/;
+		let pattern 							= /^[a-z !]+$/;
 
 		let word 								= [];
 		let criptWord							= ["enter", "imes", "ai", "ober", "ufat"];
@@ -53,12 +53,9 @@
 			letter 							= requireInput.value;
 			
 			if(pattern.test(letter)){
-				letter 						= letter.toLowerCase();
 				word 						= letter.split("");
 				
 				let i 	= 0;
-				
-				
 				
 				while(i < originalWord.length){
 					word 					= word.join("").replace(originalWord[i], criptWord[i]).split("");

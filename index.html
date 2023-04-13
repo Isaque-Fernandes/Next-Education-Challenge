@@ -75,6 +75,13 @@
 			
 			}else{
 				alert("Error only the character <!> and lowercase letters");
+				decryptLabel.style.display 			= "none";
+				decryptInput.style.display 			= "none";
+				cryptCopyBtn.style.display			= "none";
+				decryptCopyBtn.style.display		= "none";
+				cryptInput.value					= "";
+				requireInput.value					= "";
+				requireInput.focus();
 				return false;
 			}
 		};	

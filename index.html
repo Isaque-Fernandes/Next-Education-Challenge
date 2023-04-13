@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset 	= "UTF-8">
+		<meta charset 		= "UTF-8">
 		<style></style>
 		<title>Crypt and Decrypt</title>
 	</head>
@@ -18,38 +18,39 @@
 			<label 	id 		= "decryptLabel">Decrypt message: </label>
 			<input 	id 		= "decryptInput" readonly>
 		</div>
-		<button id 		= "decryptCopyBtn">Copy text</button>
+		<button id 			= "decryptCopyBtn">Copy text</button>
 		<script>
 		/*	###	DOCUMENTATION ###
 		*/
 
 		//	VARIABLES
-		let letter 								= "";
-		let pattern 							= /^[a-z !]+$/;
+		let letter 							= "";
+		let pattern 						= /^[a-z !]+$/;
 
-		let word 								= [];
-		let criptWord							= ["enter", "imes", "ai", "ober", "ufat"];
-		let originalWord 						= ["e", "i", "a", "o", "u"];
+		let word 							= [];
+		let criptWord						= ["enter", "imes", "ai", "ober", "ufat"];
+		let originalWord 					= ["e", "i", "a", "o", "u"];
 
-		let requireInput 						= document.querySelector("#requireInput");
+		let requireInput 					= document.querySelector("#requireInput");
 
-		let criptLabel							= document.querySelector("#criptLabel");
-		let cryptInput							= document.querySelector("#cryptInput");
+		let criptLabel						= document.querySelector("#criptLabel");
+		let cryptInput						= document.querySelector("#cryptInput");
 
-		let decryptLabel						= document.querySelector("#decryptLabel");
-		decryptLabel.style.display 				= "none";
-		let decryptInput 						= document.querySelector("#decryptInput");
-		decryptInput.style.display 				= "none";
+		let decryptLabel					= document.querySelector("#decryptLabel");
+		decryptLabel.style.display 			= "none";
+		let decryptInput 					= document.querySelector("#decryptInput");
+		decryptInput.style.display 			= "none";
 
-		let cryptBtn 							= document.querySelector("#cryptBtn");
-		let cryptCopyBtn						= document.querySelector("#cryptCopyBtn");
+		let cryptBtn 						= document.querySelector("#cryptBtn");
+		let cryptCopyBtn					= document.querySelector("#cryptCopyBtn");
+		cryptCopyBtn.style.display			= "none";
 
-		let decryptBtn 							= document.querySelector("#decryptBtn");
-		let decryptCopyBtn						= document.querySelector("#decryptCopyBtn");
-		decryptCopyBtn.style.display			= "none";
+		let decryptBtn 						= document.querySelector("#decryptBtn");
+		let decryptCopyBtn					= document.querySelector("#decryptCopyBtn");
+		decryptCopyBtn.style.display		= "none";
 
 		//	FUNCTIONS
-		const fnCrypt	 						= () =>{       
+		const fnCrypt	 					= () =>{       
 			letter 							= requireInput.value;
 			
 			if(pattern.test(letter)){
@@ -78,10 +79,10 @@
 			}
 		};	
 
-		const fnDecrypt 						= (cript) => {
-		word = cript;
+		const fnDecrypt 					= (cript) => {
+		word 								= cript;
 
-		let i = 0;
+		let i 								= 0;
 		/*	### DEBUG <i> <criptWord.length[5]>###
 			i = 0;
 			
@@ -93,7 +94,7 @@
 				word[ga]
 		*/
 		while (i < criptWord.length) {
-		word = word.replaceAll(criptWord[i], originalWord[i]);
+		word 								= word.replaceAll(criptWord[i], originalWord[i]);
 		i++
 		}
 		return word;
@@ -101,21 +102,22 @@
 
 		//	EVENTS
 		requireInput.focus();
-		cryptBtn.onclick 						= fnCrypt;
-		decryptBtn.onclick 						= () =>{
+		cryptBtn.onclick 					= fnCrypt;
+		decryptBtn.onclick 					= () =>{
 		decryptInput.value					= fnDecrypt(cryptInput.value);
 		decryptLabel.style.display 			= "inline-block";
 		decryptInput.style.display 			= "inline-block";
-
+		
+		cryptCopyBtn.style.display		= "inline-block";
 		decryptCopyBtn.style.display		= "inline-block";
 		};
 
-		cryptCopyBtn.onclick 					= () => {
+		cryptCopyBtn.onclick 				= () => {
 		cryptInput.select(); 
 		document.execCommand('copy'); 
 		};
 
-		decryptCopyBtn.onclick 					= () => {
+		decryptCopyBtn.onclick 				= () => {
 		decryptInput.select(); 
 		document.execCommand('copy');
 		};

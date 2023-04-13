@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset 		= "UTF-8">
+		<meta charset 			= "UTF-8">
 		<style></style>
 		<title>Crypt and Decrypt</title>
 	</head>
 	<body>
 		<h1>Type or paste your phrase, and see your message<br> (Only lowercase letters and ! symbol supported)</h1><br>
 		<label>Text message: </label>
-		<input 	id 			= "requireInput" placeholder 	= "Type text here"><button id 			= "cryptBtn">Crypt</button>
+		<input 	id 			= "requireInput" placeholder 		= "Type text here"><button id 		= "cryptBtn">Crypt</button>
 		<div>
 			<label 	id 		= "criptLabel">Crypt message: </label>
 			<input 	id 		= "cryptInput" placeholder 		= "Type cript text here"><button id 	= "decryptBtn">Decrypt</button><br>
@@ -24,11 +24,10 @@
 		*/
 
 		//	VARIABLES
-		let letter 								= "";
-		//let pattern 							= /^[a-z !]+$/;
+		let letter 							= "";
 		let pattern 							= /^[a-zBCDFGHJKLMNPQRSTVWXYZ!]+$/;
 
-		let word 								= [];
+		let word 							= [];
 		let criptWord							= ["enter", "imes", "ai", "ober", "ufat"];
 		let originalWord 						= ["e", "i", "a", "o", "u"];
 
@@ -38,49 +37,49 @@
 		let cryptInput							= document.querySelector("#cryptInput");
 
 		let decryptLabel						= document.querySelector("#decryptLabel");
-		decryptLabel.style.display 				= "none";
+		decryptLabel.style.display 					= "none";
 		let decryptInput 						= document.querySelector("#decryptInput");
-		decryptInput.style.display 				= "none";
+		decryptInput.style.display 					= "none";
 
 		let cryptBtn 							= document.querySelector("#cryptBtn");
 		let cryptCopyBtn						= document.querySelector("#cryptCopyBtn");
-		cryptCopyBtn.style.display				= "none";
+		cryptCopyBtn.style.display					= "none";
 
 		let decryptBtn 							= document.querySelector("#decryptBtn");
 		let decryptCopyBtn						= document.querySelector("#decryptCopyBtn");
-		decryptCopyBtn.style.display			= "none";
+		decryptCopyBtn.style.display					= "none";
 
 		//	FUNCTIONS
 		const fnCrypt	 						= () =>{       
-			letter 								= requireInput.value;
+			letter 							= requireInput.value;
 			
 			if(pattern.test(letter)){
-				word 							= letter.split("");
+				word 						= letter.split("");
 				
-				let i 							= 0;
+				let i 						= 0;
 				
 				while(i < originalWord.length){
-					word 						= word.join("").replace(originalWord[i], criptWord[i]).split("");
+					word 					= word.join("").replace(originalWord[i], criptWord[i]).split("");
 					i++;
 				}
 				
 				cryptInput.value 				= word.join("");
-				cryptInput.style.display 		= "inline-block";
-				criptLabel.style.display		= "inline-block";
+				cryptInput.style.display 			= "inline-block";
+				criptLabel.style.display			= "inline-block";
 				
-				decryptLabel.style.display		= "none";
-				decryptInput.style.display		= "none";
-				decryptCopyBtn.style.display	= "none";
+				decryptLabel.style.display			= "none";
+				decryptInput.style.display			= "none";
+				decryptCopyBtn.style.display			= "none";
 				
 				requireInput.value 				= "";
 				requireInput.focus();
 			
 			}else{
 				alert("Error only the exclamation character ' ! ' and lowercase letters supported");
-				decryptLabel.style.display 		= "none";
-				decryptInput.style.display 		= "none";
-				cryptCopyBtn.style.display		= "none";
-				decryptCopyBtn.style.display	= "none";
+				decryptLabel.style.display 			= "none";
+				decryptInput.style.display 			= "none";
+				cryptCopyBtn.style.display			= "none";
+				decryptCopyBtn.style.display			= "none";
 				cryptInput.value				= "";
 				requireInput.value				= "";
 				requireInput.focus();
@@ -89,9 +88,9 @@
 		};	
 
 		const fnDecrypt 						= (cript) => {
-		word 									= cript;
+		word 								= cript;
 
-		let i 									= 0;
+		let i 								= 0;
 		/*	### DEBUG <i> <criptWord.length[5]>###
 			i = 0;
 			
@@ -103,7 +102,7 @@
 				word[ga]
 		*/
 		while (i < criptWord.length) {
-		word 									= word.replaceAll(criptWord[i], originalWord[i]);
+		word 								= word.replaceAll(criptWord[i], originalWord[i]);
 		i++
 		}
 		return word;
@@ -114,19 +113,19 @@
 		cryptBtn.onclick 						= fnCrypt;
 		decryptBtn.onclick 						= () =>{
 		decryptInput.value						= fnDecrypt(cryptInput.value);
-		decryptLabel.style.display 				= "inline-block";
-		decryptInput.style.display 				= "inline-block";
+		decryptLabel.style.display 					= "inline-block";
+		decryptInput.style.display 					= "inline-block";
 	
-		cryptCopyBtn.style.display				= "inline-block";
-		decryptCopyBtn.style.display			= "inline-block";
+		cryptCopyBtn.style.display					= "inline-block";
+		decryptCopyBtn.style.display					= "inline-block";
 		};
 
-		cryptCopyBtn.onclick 					= () => {
+		cryptCopyBtn.onclick 						= () => {
 		cryptInput.select(); 
 		document.execCommand('copy'); 
 		};
 
-		decryptCopyBtn.onclick 					= () => {
+		decryptCopyBtn.onclick 						= () => {
 		decryptInput.select(); 
 		document.execCommand('copy');
 		};
